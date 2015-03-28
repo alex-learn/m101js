@@ -1,0 +1,14 @@
+{
+  "name": "async_vs_sync",
+  "version": "1.0.0",
+  "description": "npm install mongodb",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^2.0.23"
+  }
+}

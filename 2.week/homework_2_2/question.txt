@@ -1,0 +1,3 @@
+our collection only has one month of data for each "State", asking you to set "month_high": true for the day with highest temperature for each state.
+
+Hint: If you select all the weather documents, you can sort first by state, then by temperature. Then you can iterate through the documents and know that whenever the state changes you have reached the highest temperature for that state. 

@@ -1,0 +1,11 @@
+Reading clockwise from true north, the wind direction is measured by degrees around the compass up to 360 degrees. 
+
+90 is East
+
+180 is South
+
+270 is West
+
+360 is North
+
+Your assignment is to figure out the "State" that recorded the lowest "Temperature" when the wind was coming from the west ("Wind Direction" between 180 and 360). Please enter the name of the state that meets this requirement. Do not include the surrounding quotes in providing your answer.
