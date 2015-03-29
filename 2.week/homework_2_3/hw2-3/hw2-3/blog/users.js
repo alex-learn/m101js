@@ -9,7 +9,7 @@ function UsersDAO(db) {
     if (false === (this instanceof UsersDAO)) {
         console.log('Warning: UsersDAO constructor called without "new" operator');
         return new UsersDAO(db);
-    }
+    };
 
     var users = db.collection("users");
 
@@ -29,21 +29,45 @@ function UsersDAO(db) {
         }
 
         // TODO: hw2.3
-        callback(Error("addUser Not Yet Implemented!"), null);
-    }
-
-    this.validateLogin = function(username, password, callback) {
-        "use strict";
-
-        // Callback to pass to MongoDB that validates a user document
-        function validateUserDoc(err, user) {
+        // callback(Error("addUser Not Yet Implemented!"), null);      
+ 
+        // return if user exists
+        users.findOne({ '_id' : username }, function(err, doc) {
             "use strict";
 
             if (err) return callback(err, null);
 
+            if (doc) {
+                callback(null, doc);
+                return;
+            };
+
+        users.insert(user, function (err, result) {
+            "use strict";
+            if (err) return callback(err, null);
+            callback(null, user);
+        });
+        return;
+    });
+    };
+
+    this.validateLogin = function(username, password, callback) {
+        "use strict";
+        console.log("validateLogin");
+ 
+        // Callback to pass to MongoDB that validates a user document
+        function validateUserDoc(err, user) {
+            "use strict";
+            console.log("validateUserDoc");
+            console.dir(user);
+
+            if (err) return callback(err, null);
             if (user) {
+                console.log("user password: " + password + " DB password: "+ user.password);
+                console.log("bcrypt compare : " + bcrypt.compareSync(password, user.password));
                 if (bcrypt.compareSync(password, user.password)) {
                     callback(null, user);
+                    return;
                 }
                 else {
                     var invalid_password_error = new Error("Invalid password");
@@ -58,11 +82,19 @@ function UsersDAO(db) {
                 no_such_user_error.no_such_user = true;
                 callback(no_such_user_error, null);
             }
-        }
+        };
 
         // TODO: hw2.3
-        callback(Error("validateLogin Not Yet Implemented!"), null);
-    }
-}
+        // callback(Error("validateLogin Not Yet Implemented!"), null);
+
+        users.findOne({"_id": username}, function(err, doc){
+            if (err) return callback(err, null);
+            console.dir(doc);
+            validateUserDoc(err, doc);
+            return;
+        });
+
+    };
+};
 
 module.exports.UsersDAO = UsersDAO;
