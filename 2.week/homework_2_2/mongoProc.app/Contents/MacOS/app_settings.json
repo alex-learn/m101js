@@ -1,8 +1,0 @@
-{
-	"proctor_server": {
-
-        "address" : "mongoproc.mongodb.com",
-        "port": "443"
-
-    }
-}

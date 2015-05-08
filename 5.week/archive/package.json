@@ -1,0 +1,17 @@
+{
+  "name": "5.week",
+  "version": "1.0.0",
+  "description": "",
+  "main": "loadJson.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "JSONStream": "^0.10.0",
+    "event-stream": "^3.3.0",
+    "fs": "0.0.2",
+    "mongodb": "^2.0.27"
+  }
+}
